@@ -23,6 +23,7 @@ class BiCalc:
 		Button(window, text="Calculate Prob",
 			command=self.calcProb, 
 			font="Helvetica 14").grid(row=7,column=2,padx=(100,5),pady=5)
+		
 
 		self.p = StringVar()
 		self.n = StringVar()
@@ -45,7 +46,7 @@ class BiCalc:
 			justify=RIGHT).grid(row=6,column=2,sticky=E)
 
 		if self.status=="1":
-			messagebox.showalert(title="ERROR",message="r can't be bigger than n")
+			messagebox.showwarning(title="ERROR",message="r can't be bigger than n")
 		window.mainloop()
 
 	def calcProb(self):
@@ -59,7 +60,7 @@ class BiCalc:
 		if (r-n>0):
 			self.prob.set("ERROR : PLEASE TRY AGAIN")
 			self.status.set("1")
-
+			return
 		
 		for ii in range(i,r+1):
 			prob += comb(n,ii)*pow(p,ii)*pow(q,n-ii)
